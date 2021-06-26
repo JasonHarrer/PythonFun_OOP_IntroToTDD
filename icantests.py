@@ -36,6 +36,20 @@ def coins(change):
     return changecoins
 
 
+def factorial(number):
+    if number > 1:
+        return number * factorial(number - 1)
+    return number
+
+
+def fibonacci(number):
+    if number == 0:
+        return 0
+    elif number == 1:
+        return 1
+    else:
+        return fibonacci(number-1) + fibonacci(number-2)
+
 class Tester(unittest.TestCase):
     def setUp(self):
         self.reverselist1 = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
@@ -44,16 +58,31 @@ class Tester(unittest.TestCase):
         self.reverselist4 = [ 30, 27, 24, 21, 18, 15, 12, 9, 6, 3 ]
         self.reverselist5 = [ "January", "February", "March", "April", "May", "June",
                               "July", "August", "September", "October", "November", "December" ]
+
         self.palindrome1 = "Go hang a salami, I\'m a lasagna hog."
         self.palindrome2 = "I am not a palindrome."
         self.palindrome3 = "Drab as a fool, aloof as a bard."
         self.palindrome4 = "Never odd or even"
         self.palindrome5 = "She sells seashells by the sea shore!"
+
         self.coinages1   = 73
         self.coinages2   = 2
         self.coinages3   = 42
         self.coinages4   = 99
         self.coinages5   = 13
+
+        self.factorial1  = 5
+        self.factorial2  = 17
+        self.factorial3  = 3
+        self.factorial4  = 42
+        self.factorial5  = 1
+
+        self.fibonacci1  = 0
+        self.fibonacci2  = 1
+        self.fibonacci3  = 2
+        self.fibonacci4  = 15
+        self.fibonacci5  = 37
+
 
     def testReverseList(self):
         self.assertEqual(reverseList(self.reverselist1), [ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ])
@@ -77,6 +106,21 @@ class Tester(unittest.TestCase):
         self.assertEqual(coins(self.coinages3), [1, 1, 1, 2])
         self.assertEqual(coins(self.coinages4), [3, 2, 0, 4])
         self.assertEqual(coins(self.coinages5), [0, 1, 0, 3])
+
+
+    def testFactorial(self):
+        self.assertEqual(factorial(self.factorial1), 120)
+        self.assertEqual(factorial(self.factorial2), 355687428096000)
+        self.assertEqual(factorial(self.factorial3), 6)
+        self.assertEqual(factorial(self.factorial4), 1405006117752879898543142606244511569936384000000000)
+        self.assertEqual(factorial(self.factorial5), 1)
+
+    def testFibonacci(self):
+        self.assertEqual(fibonacci(self.fibonacci1), 0)
+        self.assertEqual(fibonacci(self.fibonacci2), 1)
+        self.assertEqual(fibonacci(self.fibonacci3), 1)
+        self.assertEqual(fibonacci(self.fibonacci4), 610)
+        self.assertEqual(fibonacci(self.fibonacci5), 24157817)
 
 
 if __name__ == '__main__':
